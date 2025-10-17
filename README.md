@@ -48,8 +48,8 @@ By combining **advanced data processing**, **machine learning**, and **validatio
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/air-pollution-modeling.git
-cd air-pollution-modeling
+git clone https://github.com/arminnakhjiri/air-quality-model.git
+cd air-quality-model
 ```
 
 ### 2. Open in GEE Code Editor
