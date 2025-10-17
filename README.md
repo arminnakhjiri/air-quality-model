@@ -96,7 +96,7 @@ Export.image.toDrive();
 
 ---
 
-## 🧑‍🏫 About the Author
+## 🧑‍🏫 Author
 
 **Armin Nakhjiri**
 📧 [Nakhjiri.Armin@gmail.com](mailto:Nakhjiri.Armin@gmail.com)
