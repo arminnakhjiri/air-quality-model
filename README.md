@@ -1,6 +1,6 @@
 # 🌍 Air Pollution Modeling in Mashhad using Google Earth Engine (GEE)
 
-This repository contains a **Google Earth Engine (GEE)** JavaScript script for modeling the **spatial distribution** of key air pollutants—**CO**, **SO₂**, **NO₂**, and **HCHO**—in **Mashhad County, Iran**.
+This repository contains a **Google Earth Engine (GEE)** JavaScript script for modeling the **spatial distribution** of 4 key air pollutants (**CO**, **SO₂**, **NO₂**, and **HCHO**) in **Mashhad County, Iran**.
 
 The workflow integrates **multi-source satellite data** from **Sentinel-2**, **Landsat-9**, **MODIS**, and **Sentinel-5P**, along with auxiliary datasets such as elevation, weather variables, population density, and proximity to industrial centers.
 
