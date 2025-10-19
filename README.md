@@ -1,26 +1,26 @@
-# 🌍 Air Pollution Modeling Google Earth Engine (GEE)
+# 🌍 Air Pollution Modeling in Mashhad using Google Earth Engine (GEE)
 
-This repository contains a **Google Earth Engine (GEE)** JavaScript script designed for modeling the **spatial distribution** of major air pollutants—**carbon monoxide (CO)**, **sulfur dioxide (SO₂)**, **nitrogen dioxide (NO₂)**, and **formaldehyde (HCHO)**—in **Mashhad County, Iran**.
+This repository contains a **Google Earth Engine (GEE)** JavaScript script for modeling the **spatial distribution** of key air pollutants—**CO**, **SO₂**, **NO₂**, and **HCHO**—in **Mashhad County, Iran**.
 
-The workflow integrates **multi-source remote sensing data** from **Sentinel-1**, **Sentinel-2**, **Landsat-9**, **MODIS**, and **Sentinel-5P**, along with auxiliary datasets such as elevation, weather parameters, population density, and industrial proximity.
+The workflow integrates **multi-source satellite data** from **Sentinel-2**, **Landsat-9**, **MODIS**, and **Sentinel-5P**, along with auxiliary datasets such as elevation, weather variables, population density, and proximity to industrial centers.
 
-Using the **Random Forest algorithm**, the script:
+The script uses a **Random Forest algorithm** to:
 
-* Filters cloud cover
-* Computes spectral indices (e.g., **NDVI**, **SAVI**)
-* Downscales **land surface temperature (LST)** via linear regression
-* Achieves a **99.9% accurate land cover classification**
+* Preprocess and filter cloud cover in satellite images
+* Compute spectral indices such as **NDVI** and **SAVI**
+* Downscale **land surface temperature (LST)** using regression methods
+* Train separate Random Forest models for each pollutant
 
-Separate Random Forest models are trained for each pollutant, validated with a **70/30 train-test split**, achieving **R² values from 0.81 (SO₂)** to **0.98 (CO)**, along with **MAE** and **RMSE** metrics.
+Models are validated using a **70/30 train-test split**, achieving R² values between 0.81 to 0.98, along with **MAE** and **RMSE** metrics, demonstrating robust performance in estimating spatial pollutant patterns.
 
-Fully executable in GEE, the workflow **exports classified maps and stacked predictor images to Google Drive**, offering a **cost-effective, scalable solution** for **air quality assessment** in **data-scarce regions** like Mashhad.
+The workflow **exports maps and predictor layers to Google Drive**, offering a **scalable and cost-effective solution** for **air quality assessment** in regions with limited ground-based monitoring.
 
 ---
 
 ## 🔍 Overview
 
-This script provides an **end-to-end environmental monitoring solution**, addressing the lack of ground-based measurements by leveraging satellite-derived insights.
-By combining **advanced data processing**, **machine learning**, and **validation techniques**, it delivers **actionable pollutant distribution maps** that support **environmental policy** and **urban planning** in Mashhad—a city with ~3.4 million residents (2024) and substantial industrial activity [WMO, 2024].
+This script provides an **end-to-end workflow** for air quality modeling, addressing gaps in ground-based measurements by leveraging satellite-derived data.
+By combining **data preprocessing**, **machine learning**, and **validation techniques**, the workflow produces **high-resolution pollutant distribution maps** to support **environmental policy** and **urban planning** in Mashhad—a city with ~3.4 million residents (2024) and significant industrial activity.
 
 ---
 
@@ -32,13 +32,13 @@ By combining **advanced data processing**, **machine learning**, and **validatio
   ```js
   ee.Authenticate();
   ```
-* **JavaScript Basics**
-  Familiarity with GEE scripting is recommended.
-* **Assets**
-  Upload and import:
 
-  * AOI geometry (e.g., Mashhad boundary)
-  * Training data (`FeatureCollections` V, W, S, I, I5)
+* **JavaScript Basics** – familiarity with GEE scripting is recommended
+
+* **Assets** – upload or import:
+
+  * AOI geometry (Mashhad boundary)
+  * Training datasets (`FeatureCollections` V, W, S, I, I5)
   * Industrial center tables (`table1–13`)
 
 ---
@@ -55,23 +55,23 @@ cd air-quality-model
 ### 2. Open in GEE Code Editor
 
 * Copy `main.js` into the [GEE Code Editor](https://code.earthengine.google.com).
-* Update placeholders (`aoi`, `table1–13`) with your own asset IDs.
+* Update placeholders (`aoi`, `table1–13`) with your asset IDs.
 
-### 3. Execute the Script
+### 3. Run the Workflow
 
-Run the workflow sequentially:
+Sequential steps:
 
 1. **Data loading**
-2. **Processing & feature computation**
-3. **Classification & modeling**
+2. **Preprocessing & feature computation**
+3. **Model training & prediction**
 
-Visualize results using:
+Visualize results with:
 
 ```js
 Map.addLayer();
 ```
 
-Export outputs via:
+Export outputs to Google Drive:
 
 ```js
 Export.image.toDrive();
@@ -81,8 +81,8 @@ Export.image.toDrive();
 
 ## 🌱 Key Features
 
-* Integrated **data preprocessing**, **model training**, and **validation**
-* **Cloud masking** and **spectral index** computation
+* Complete **data preprocessing, model training, and validation**
+* **Cloud masking** and **spectral index computation**
 * **LST downscaling** and pollutant concentration prediction
 * **Scalable** to other urban areas with minimal adjustments
 
@@ -90,9 +90,9 @@ Export.image.toDrive();
 
 ## 📌 Notes
 
-* Modify **AOI**, **date ranges**, or **band selections** for different regions or time frames.
-* High R² values indicate strong model performance; additional **ground truth data** can further enhance validation.
-* Although optimized for **Mashhad**, the script can be adapted for **other cities or countries**.
+* Modify **AOI**, **date ranges**, or **bands** for other regions or periods
+* High **R² values** indicate strong model performance; additional **ground truth data** can improve validation
+* Although optimized for **Mashhad**, the workflow is adaptable to **other cities or countries**
 
 ---
 
